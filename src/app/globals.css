@@ -6,31 +6,31 @@ body{
   margin: 0%;
   padding: 0%;
 }
-.heading{
+.heading1{
   color: white;
   background-color: rgb(0, 128, 157);
   font-weight:bold;
   align-items: center;
   justify-content: center;
   height: 60px;
-  font-size:x-large;
+  font-size:xx-large;
   display: flex;
+  font-family: 'Times New Roman', Times, serif;
 }
 .Description{
-  padding: 20px 10px 20px 10px ;
+  padding: 20px 40px 20px 40px;
   border-radius: 10px;
-  margin: 20px;
+  margin: 40px 90px 40px 60px;
   box-shadow: 5px 5px 5px 1px rgba(183, 230, 239);
   border: 2px solid rgb(184, 248, 255); 
 }
 .btn {
   background: hsl(0, 0%, 100%);
-  padding: 16px 24px;
+  padding: 20px 40px 20px 40px;
   position: relative;
   border-radius: 8px;
   box-shadow: 0 0 0 1px rgba(0,0,0,.01);
-  margin-left: 20px;
-  margin-top: 30px;
+  margin-left: 40px 0 40px 80px;
 
   &::after {
     position: absolute;
@@ -69,5 +69,77 @@ body{
   }
 }
 .tasks{
-background-color: bisque;
+background-color:  rgb(0, 128, 157);
+color: white;
+padding: 10px 10px 10px 10px;
+justify-content: center;
+display: flex;
+}
+.render{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.heading5{
+  font-size: larger;
+  font-family: 'Times New Roman', Times, serif;
+} 
+.button {
+  width: 150px;
+  height:50px;
+  border-radius:180px;
+  position:relative;
+  left:calc(50% - 75px);
+  top:calc(50% - 25px);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  cursor:pointer;
+  line-height:12px;
+}
+
+.button:before {
+  content:'';
+  z-index:1;
+  position:absolute;
+  display:block;
+  width:80%;
+  height:70%;
+  top:15%;
+  left:10%;
+  transition: 0.3s opacity ease-in-out;
+  filter:blur(15px);
+  opacity:0;
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+}
+
+.button:hover:before {
+  opacity:1;
+  transition: 0.3s opacity ease-in-out;
+  filter:blur(25px);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);  
+}
+
+.button:after {
+  content:'DELETE';
+  text-align:center;
+  line-height:40px;
+  font-size:18px;
+  color:rgb(0, 0, 0);
+  font-weight:bold;
+  z-index:5;
+  position:absolute;
+  display:block;
+  border-radius:180px;
+  width:92%;
+  height:80%;
+  top:10%;
+  left:4%;  
+  background-color:rgb(255, 255, 255);
+}
+.heading2
+{
+padding: 5px;
+font-size: large;
+font-family: 'Times New Roman', Times, serif;
+text-align: center;
+font-weight: bold;
 }
