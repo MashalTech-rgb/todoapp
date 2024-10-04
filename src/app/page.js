@@ -27,7 +27,7 @@ const Page = () => {
           <div className='render'>
             <h5 className='heading5'>{t.title}</h5>
             <h5 className='heading5'>{t.desc}</h5>
-            <button className='button ' onClick={() => deleteHandler(i)}>Delete</button>
+            <button className='button' onClick={() => deleteHandler(i)}>Delete</button>
           </div>
         </li>
       );
