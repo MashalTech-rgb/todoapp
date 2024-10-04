@@ -77,12 +77,14 @@ display: flex;
 }
 .render{
   display: flex;
+  margin: 10px 0 0 0;
   justify-content: space-between;
-  margin: 10px 0;
+  align-items: center;
 }
 .heading5{
   font-size: larger;
   font-family: 'Times New Roman', Times, serif;
+  padding-inline-end: 100px;
 } 
 .button {
   width: 150px;
