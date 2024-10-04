@@ -48,6 +48,7 @@ const Page = () => {
             setTitle(e.target.value);
           }}
         />
+        
         <input 
           type='text' 
           className='Description' 
@@ -58,6 +59,7 @@ const Page = () => {
             setDesc(e.target.value);
           }}
         />
+    
         <button className='btn'>Click here to Add Task</button>
       </form>
       <div className='tasks'>
