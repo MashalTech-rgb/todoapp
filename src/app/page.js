@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from 'react';
-
 const Page = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
@@ -8,6 +7,10 @@ const Page = () => {
 
   const submitHandling = (e) => {
     e.preventDefault();
+    if (title.trim() === "" || desc.trim() === "") {
+      alert("Both title and description are required!");
+      return;
+    }
     setMainTask([...MainTask, { title, desc }]);
     setTitle("");
     setDesc("");
