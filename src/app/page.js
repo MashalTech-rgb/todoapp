@@ -1,76 +1,45 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getTodo } from './utils/api';
+
 const Page = () => {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [MainTask, setMainTask] = useState([]);
+  const [todo, setTodo] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const submitHandling = (e) => {
-    e.preventDefault();
-    if (title.trim() === "" || desc.trim() === "") {
-      alert("Both title and description are required!");
-      return;
-    }
-    setMainTask([...MainTask, { title, desc }]);
-    setTitle("");
-    setDesc("");
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getTodo();
+        setTodo(data); // data is now guaranteed to be an array
+      } catch (error) {
+        console.log(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
-  const deleteHandler = (index) => {
-    let copyTask = [...MainTask];
-    copyTask.splice(index, 1);
-    setMainTask(copyTask);
-  };
-
-  let renderTask = <h2 className='heading2'>No Task Available</h2>;
-  if (MainTask.length > 0) {
-    renderTask = MainTask.map((t, i) => {
-      return (
-        <li key={i}>
-          <div className='render'>
-            <h5 className='heading5'>{t.title}</h5>
-            <h5 className='heading5'>{t.desc}</h5>
-            <button className='button' onClick={() => deleteHandler(i)}>Delete</button>
-          </div>
-        </li>
-      );
-    });
-  }
+  if (loading) return <h1>Loading...</h1>;
 
   return (
     <>
-      <h1 className='heading1'>My To-Do-App</h1>
-      <form onSubmit={submitHandling}>
-        <input 
-          type='text' 
-          className='Description' 
-          placeholder='Enter Title Here'
-          value={title} 
-          onChange={(e) => {
-            console.log("Title input:", e.target.value);
-            setTitle(e.target.value);
-          }}
-        />
-        
-        <input 
-          type='text' 
-          className='Description' 
-          placeholder='Enter Description Here'
-          value={desc} 
-          onChange={(e) => {
-            console.log("Description input:", e.target.value);
-            setDesc(e.target.value);
-          }}
-        />
-    
-        <button className='btn'>Click here to Add Task</button>
-      </form>
-      <div className='tasks'>
-        <ul>
-          {renderTask}
-        </ul>
-      </div>
-    </>
+    <div className='Main'>
+      <h1 className='bg-black text-white text-xlg font-bold text-center p-5 border'>My To-Do-App</h1>
+      {todo.map((item, id) => (
+        <div key={id} className='p-2 border flex justify-between items-center'>
+          <div>
+            <h2 className='text-lg p-5'>{item.id} - {item.todo} {item.completed ? "(Completed)" : ""}</h2>
+          </div>
+          <div className='flex space-x-2'>
+            <button className='bg-black text-white p-3 rounded-lg'>Update</button>
+            <button className='bg-black text-white p-3 rounded-lg'>Delete</button>
+            <button className='bg-black text-white p-3 rounded-lg'>Done</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </>
   );
 };
 
